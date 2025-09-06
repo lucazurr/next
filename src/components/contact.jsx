@@ -1,14 +1,24 @@
 import { useState } from "react";
 import emailjs from "emailjs-com";
 import React from "react";
+import { emailConfig } from "../emailConfig";
 
 const initialState = {
   name: "",
   email: "",
   message: "",
 };
+
+const formStates = {
+  IDLE: 'idle',
+  SENDING: 'sending',
+  SUCCESS: 'success',
+  ERROR: 'error'
+};
 export const Contact = (props) => {
   const [{ name, email, message }, setState] = useState(initialState);
+  const [formStatus, setFormStatus] = useState(formStates.IDLE);
+  const [statusMessage, setStatusMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,19 +29,55 @@ export const Contact = (props) => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, email, message);
     
-    {/* replace below with your own Service ID, Template ID and Public Key from your EmailJS account */ }
+    // Validazione base
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      setFormStatus(formStates.ERROR);
+      setStatusMessage('Tutti i campi sono obbligatori.');
+      return;
+    }
+    
+    setFormStatus(formStates.SENDING);
+    setStatusMessage('Invio in corso...');
+    
+    // Prepara i dati del template
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      message: message,
+      to_email: emailConfig.toEmail
+    };
     
     emailjs
-      .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", e.target, "YOUR_PUBLIC_KEY")
+      .send(
+        emailConfig.serviceId,
+        emailConfig.templateId,
+        templateParams,
+        emailConfig.publicKey
+      )
       .then(
         (result) => {
-          console.log(result.text);
+          console.log('Email inviata con successo:', result.text);
+          setFormStatus(formStates.SUCCESS);
+          setStatusMessage('Messaggio inviato con successo! Ti risponderemo presto.');
           clearState();
+          
+          // Reset del messaggio dopo 5 secondi
+          setTimeout(() => {
+            setFormStatus(formStates.IDLE);
+            setStatusMessage('');
+          }, 5000);
         },
         (error) => {
-          console.log(error.text);
+          console.error('Errore nell\'invio:', error.text);
+          setFormStatus(formStates.ERROR);
+          setStatusMessage('Errore nell\'invio del messaggio. Riprova più tardi.');
+          
+          // Reset del messaggio dopo 5 secondi
+          setTimeout(() => {
+            setFormStatus(formStates.IDLE);
+            setStatusMessage('');
+          }, 5000);
         }
       );
   };
@@ -48,7 +94,7 @@ export const Contact = (props) => {
                   get back to you as soon as possible.
                 </p>
               </div>
-              <form name="sentMessage" validate onSubmit={handleSubmit}>
+              <form name="sentMessage" onSubmit={handleSubmit}>
                 <div className="row">
                   <div className="col-md-6">
                     <div className="form-group">
@@ -59,6 +105,7 @@ export const Contact = (props) => {
                         className="form-control"
                         placeholder="Name"
                         required
+                        value={name}
                         onChange={handleChange}
                       />
                       <p className="help-block text-danger"></p>
@@ -73,6 +120,7 @@ export const Contact = (props) => {
                         className="form-control"
                         placeholder="Email"
                         required
+                        value={email}
                         onChange={handleChange}
                       />
                       <p className="help-block text-danger"></p>
@@ -87,13 +135,29 @@ export const Contact = (props) => {
                     rows="4"
                     placeholder="Message"
                     required
+                    value={message}
                     onChange={handleChange}
                   ></textarea>
                   <p className="help-block text-danger"></p>
                 </div>
-                <div id="success"></div>
-                <button type="submit" className="btn btn-custom btn-lg">
-                  Send Message
+                
+                {/* Messaggio di stato */}
+                {statusMessage && (
+                  <div className={`alert ${
+                    formStatus === formStates.SUCCESS ? 'alert-success' : 
+                    formStatus === formStates.ERROR ? 'alert-danger' : 
+                    'alert-info'
+                  }`} style={{ marginTop: '15px' }}>
+                    {statusMessage}
+                  </div>
+                )}
+                
+                <button 
+                  type="submit" 
+                  className="btn btn-custom btn-lg"
+                  disabled={formStatus === formStates.SENDING}
+                >
+                  {formStatus === formStates.SENDING ? 'Invio...' : 'Send Message'}
                 </button>
               </form>
             </div>
