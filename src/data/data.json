@@ -161,24 +161,24 @@
   },
   "Features": [
     {
-      "icon": "fa fa-comments-o",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "icon": "fa fa-gamepad",
+      "title": "ASMR Unboxing",
+      "text": "We create ASMR unboxing experiences that generate engagement and strengthen brand presence."
     },
     {
-      "icon": "fa fa-bullhorn",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "icon": "fa fa-headphones",
+      "title": "Brand Awareness",
+      "text": "Innovative audio-visual strategies to increase visibility and recognition of your brand."
     },
     {
-      "icon": "fa fa-group",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "icon": "fa fa-video-camera",
+      "title": "Community Growth",
+      "text": "We build loyal communities through engaging content and targeted campaigns."
     },
     {
-      "icon": "fa fa-magic",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "icon": "fa fa-users",
+      "title": "Gaming Insights",
+      "text": "In-depth gaming market analysis to optimize your marketing strategies."
     }
   ]
 }

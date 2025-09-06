@@ -2,28 +2,14 @@ import React from "react";
 
 export const Header = (props) => {
   return (
-    <header id="header">
-      <div className="intro">
-        <div className="overlay">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-8 col-md-offset-2 intro-text">
-                <h1>
-                  {props.data ? props.data.title : "Loading"}
-                  <span></span>
-                </h1>
-                <p>{props.data ? props.data.paragraph : "Loading"}</p>
-                <a
-                  href="#features"
-                  className="btn btn-custom btn-lg page-scroll"
-                >
-                  Learn More
-                </a>{" "}
-              </div>
-            </div>
-          </div>
-        </div>
+    <section className="hero">
+      <div>
+        <h1>ADVERTISING THAT HITS THE SPOT.</h1>
+        <p>
+          We craft standout ASMR unboxing campaigns for global gaming brands.
+          Brighter visuals, cleaner sound, and measurable impact across your launch windows.
+        </p>
       </div>
-    </header>
+    </section>
   );
 };
