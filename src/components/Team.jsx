@@ -4,18 +4,16 @@ export const Team = (props) => {
   return (
     <div id="team" className="text-center">
       <div className="container">
-        <div className="col-md-8 col-md-offset-2 section-title">
-          <p style={{fontSize: '1.5rem', textAlign: 'center'}}>
-            We're a creative studio specialized in ASMR unboxing for gaming brands. We design sound-first videos that boost attention and brand recall.
-          </p>
-        </div>
+
         <div id="row">
           {props.data
             ? props.data.map((d, i) => (
                 <div key={`${d.name}-${i}`} className="col-md-3 col-sm-6 team">
                   <div className="thumbnail">
                     {" "}
-                    <img src={d.img} alt="..." className="team-img" />
+                    <a href="https://google.com" target="_blank" rel="noopener noreferrer" className="team-img-link">
+                      <img src={d.img} alt="..." className="team-img" />
+                    </a>
                     <div className="caption">
                       <h4>{d.name}</h4>
                       <p>{d.job}</p>

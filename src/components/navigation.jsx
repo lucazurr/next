@@ -39,7 +39,7 @@ export const Navigation = (props) => {
               </li>
               <li style={{margin: '0 15px'}}>
                 <a href="#team" className="page-scroll">
-                  Team
+                  Blog
                 </a>
               </li>
               <li style={{margin: '0 15px'}}>
