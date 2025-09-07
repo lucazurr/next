@@ -37,12 +37,21 @@ export const Navigation = (props) => {
           <div style={{flex: '1', display: 'flex', justifyContent: 'center'}}>
             <ul className="nav navbar-nav" style={{display: 'flex', alignItems: 'center', margin: 0, padding: 0, listStyle: 'none'}}>
               <li style={{margin: '0 15px'}}>
-                <Link to="/" className="page-scroll" style={{
-                  textDecoration: 'none', 
-                  color: 'inherit',
-                  borderBottom: isGamesPage ? '2px solid #fff' : 'none',
-                  paddingBottom: '5px'
-                }}>
+                <Link 
+                  to="/" 
+                  className="page-scroll" 
+                  style={{
+                    textDecoration: 'none', 
+                    color: 'inherit',
+                    borderBottom: isGamesPage ? '2px solid #fff' : 'none',
+                    paddingBottom: '5px'
+                  }}
+                  onClick={() => {
+                    if (isGamesPage) {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }}
+                >
                   Games
                 </Link>
               </li>
@@ -52,12 +61,21 @@ export const Navigation = (props) => {
                 </a>
               </li>
               <li style={{margin: '0 15px'}}>
-                <Link to="/apple" className="page-scroll" style={{
-                  textDecoration: 'none', 
-                  color: 'inherit',
-                  borderBottom: isApplePage ? '2px solid #fff' : 'none',
-                  paddingBottom: '5px'
-                }}>
+                <Link 
+                  to="/apple" 
+                  className="page-scroll" 
+                  style={{
+                    textDecoration: 'none', 
+                    color: 'inherit',
+                    borderBottom: isApplePage ? '2px solid #fff' : 'none',
+                    paddingBottom: '5px'
+                  }}
+                  onClick={() => {
+                    if (isApplePage) {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }}
+                >
                   Apple
                 </Link>
               </li>

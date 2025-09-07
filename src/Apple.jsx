@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Navigation } from "./components/navigation";
-import { Header } from "./components/header";
+import { AppleHeader } from "./components/apple-header";
 import { Features } from "./components/features";
 
 
@@ -38,7 +38,7 @@ const Apple = () => {
   return (
     <div>
       <Navigation />
-      <Header data={landingPageData.Header} />
+      <AppleHeader data={landingPageData.Header} />
       <Features data={landingPageData.Features} />
 
 
