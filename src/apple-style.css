@@ -1,0 +1,18 @@
+/* Apple Page Specific Styles - Blue Background */
+body.apple-page {
+  --yellow-1: #87CEEB; /* azzurro brillante */
+  --yellow-2: #4682B4; /* azzurro puro */
+  --yellow-3: #B0E0E6; /* azzurro chiaro */
+}
+
+/* Header Section - Apple Page with Blue Background */
+body.apple-page .intro {
+  background: linear-gradient(180deg, #87CEEB 0%, #4682B4 50%, #B0E0E6 100%) !important;
+}
+
+/* HERO SECTION - Elegante e Bilanciata con sfondo azzurro */
+body.apple-page .hero::before {
+  background: 
+    radial-gradient(ellipse 1400px 800px at center top, rgba(255,255,255,.4), rgba(255,255,255,0) 70%), 
+    linear-gradient(180deg, #87CEEB 0%, #4682B4 50%, #B0E0E6 100%) !important;
+}
