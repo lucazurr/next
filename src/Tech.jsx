@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Navigation } from "./components/navigation";
-import { GamingSection } from "./components/gaming-section";
-import { Header } from "./components/header";
+import { TechSection } from "./components/tech-section";
+import { AppleHeader } from "./components/apple-header";
 import { Features } from "./components/features";
 import { ScrollToTop } from "./components/scroll-to-top";
 
@@ -13,6 +13,7 @@ import { Contact } from "./components/contact";
 import JsonData from "./data/data.json";
 import SmoothScroll from "smooth-scroll";
 import "./App.css";
+import "./apple-style.css";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -20,10 +21,20 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
   offset: 80,
 });
 
-const App = () => {
+const Tech = () => {
   const [landingPageData, setLandingPageData] = useState({});
   useEffect(() => {
     setLandingPageData(JsonData);
+  }, []);
+
+  useEffect(() => {
+    // Aggiungi la classe apple-page al body
+    document.body.classList.add('apple-page');
+    
+    // Rimuovi la classe quando il componente viene smontato
+    return () => {
+      document.body.classList.remove('apple-page');
+    };
   }, []);
 
   useEffect(() => {
@@ -34,8 +45,8 @@ const App = () => {
   return (
     <div>
       <Navigation />
-      <GamingSection />
-      <Header data={landingPageData.Header} />
+      <TechSection />
+      <AppleHeader data={landingPageData.Header} />
       <Features data={landingPageData.Features} />
 
 
@@ -48,4 +59,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Tech;

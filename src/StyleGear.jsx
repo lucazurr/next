@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Navigation } from "./components/navigation";
-import { GamingSection } from "./components/gaming-section";
-import { Header } from "./components/header";
+import { StyleGearSection } from "./components/style-gear-section";
+import { StyleGearHeader } from "./components/style-gear-header";
 import { Features } from "./components/features";
 import { ScrollToTop } from "./components/scroll-to-top";
-
-
-
-
 import { Team } from "./components/Team";
 import { Contact } from "./components/contact";
 import JsonData from "./data/data.json";
@@ -20,10 +16,20 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
   offset: 80,
 });
 
-const App = () => {
+const StyleGear = () => {
   const [landingPageData, setLandingPageData] = useState({});
   useEffect(() => {
     setLandingPageData(JsonData);
+  }, []);
+
+  useEffect(() => {
+    // Aggiungi la classe style-gear-page al body
+    document.body.classList.add('style-gear-page');
+    
+    // Rimuovi la classe quando il componente viene smontato
+    return () => {
+      document.body.classList.remove('style-gear-page');
+    };
   }, []);
 
   useEffect(() => {
@@ -34,18 +40,14 @@ const App = () => {
   return (
     <div>
       <Navigation />
-      <GamingSection />
-      <Header data={landingPageData.Header} />
+      <StyleGearSection />
+      <StyleGearHeader data={landingPageData.Header} />
       <Features data={landingPageData.Features} />
-
-
-
-
       <Team data={landingPageData.Team} />
-        <Contact data={landingPageData.Contact} />
+      <Contact data={landingPageData.Contact} />
       <ScrollToTop />
     </div>
   );
 };
 
-export default App;
+export default StyleGear;

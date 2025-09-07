@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Navigation } from "./components/navigation";
-import { AppleHeader } from "./components/apple-header";
+import { HowToSection } from "./components/howto-section";
+import { HowToHeader } from "./components/howto-header";
 import { Features } from "./components/features";
-
-
-
-
+import { ScrollToTop } from "./components/scroll-to-top";
 import { Team } from "./components/Team";
 import { Contact } from "./components/contact";
 import JsonData from "./data/data.json";
 import SmoothScroll from "smooth-scroll";
 import "./App.css";
-import "./apple-style.css";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -19,35 +16,38 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
   offset: 80,
 });
 
-const Apple = () => {
+const HowTo = () => {
   const [landingPageData, setLandingPageData] = useState({});
   useEffect(() => {
     setLandingPageData(JsonData);
   }, []);
 
   useEffect(() => {
-    // Aggiungi la classe apple-page al body
-    document.body.classList.add('apple-page');
+    // Aggiungi la classe howto-page al body
+    document.body.classList.add('howto-page');
     
     // Rimuovi la classe quando il componente viene smontato
     return () => {
-      document.body.classList.remove('apple-page');
+      document.body.classList.remove('howto-page');
     };
+  }, []);
+
+  useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
   }, []);
 
   return (
     <div>
       <Navigation />
-      <AppleHeader data={landingPageData.Header} />
+      <HowToSection />
+      <HowToHeader data={landingPageData.Header} />
       <Features data={landingPageData.Features} />
-
-
-
-
       <Team data={landingPageData.Team} />
-        <Contact data={landingPageData.Contact} />
+      <Contact data={landingPageData.Contact} />
+      <ScrollToTop />
     </div>
   );
 };
 
-export default Apple;
+export default HowTo;
