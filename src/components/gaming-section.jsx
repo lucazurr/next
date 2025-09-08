@@ -6,7 +6,9 @@ export const GamingSection = () => {
       <div className="container">
         <div className="gaming-categories">
           <div className="gaming-category">
-            <h3>Console</h3>
+            <a href="#image-gallery" className="page-scroll">
+              <h3>Console</h3>
+            </a>
           </div>
           
           <div className="gaming-category">

@@ -360,6 +360,18 @@ body.howto-page a:hover {
   text-decoration: none;
 }
 
+.gaming-category a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.gaming-category a:hover,
+.gaming-category a:focus {
+  text-decoration: none;
+  color: inherit;
+}
+
 .tech-category h3 {
   font-family: "Inter", sans-serif;
   font-size: 16px;
@@ -672,9 +684,10 @@ body.style-gear-page .style-gear-categories .style-gear-category:hover h3 {
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: #000;
+  color: #FFD600 !important;
   background-color: transparent;
-  border-bottom: 2px solid #FFD600;
+  border-bottom: 2px solid #FFD600 !important;
+  font-weight: 600;
 }
 .navbar-default .navbar-nav > .active > a:after,
 .navbar-default .navbar-nav > .active > a:hover:after,
@@ -1341,6 +1354,46 @@ header .intro-text {
   padding: 10px 0 0;
   color: #888;
 }
+
+/* Image Gallery Section */
+#image-gallery {
+  background: #F8F9FA;
+  padding: 100px 0;
+}
+
+#image-gallery-white {
+  padding: 100px 0;
+  background: #ffffff;
+}
+
+#image-gallery .gallery-item,
+#image-gallery-white .gallery-item {
+  margin-bottom: 20px;
+}
+
+#image-gallery .gallery-img,
+#image-gallery-white .gallery-img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#image-gallery .gallery-img:hover,
+#image-gallery-white .gallery-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  #image-gallery .gallery-item,
+  #image-gallery-white .gallery-item {
+    margin-bottom: 15px;
+  }
+}
+
 /* Contact Section */
 /* Footer */
 #footer {

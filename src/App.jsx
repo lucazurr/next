@@ -9,6 +9,7 @@ import { ScrollToTop } from "./components/scroll-to-top";
 
 
 import { Team } from "./components/Team";
+import { ImageGallery } from "./components/image-gallery";
 import { Contact } from "./components/contact";
 import JsonData from "./data/data.json";
 import SmoothScroll from "smooth-scroll";
@@ -42,7 +43,8 @@ const App = () => {
 
 
       <Team data={landingPageData.Team} />
-        <Contact data={landingPageData.Contact} />
+      <ImageGallery />
+      <Contact data={landingPageData.Contact} />
       <ScrollToTop />
     </div>
   );
